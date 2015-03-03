@@ -1,6 +1,6 @@
 """
     Multiprocessing in python
-    Copyright (C) 2015 Jordi Pujol-Ahulló <jordi.pujol@urv.cat>
+    Copyright (C) 2015 Jordi Pujol-Ahullo <jordi.pujol@urv.cat>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

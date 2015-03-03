@@ -1,6 +1,6 @@
 """
     Multiprocessing in python
-    Copyright (C) 2015 Jordi Pujol-Ahulló <jordi.pujol@urv.cat>
+    Copyright (C) 2015 Jordi Pujol-Ahullo <jordi.pujol@urv.cat>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,6 +51,8 @@ def test_pool(size):
     data = range(3)
 
     print data, "=>", p.map(worker, data)
+    p.terminate()
+    p.join()
     print ""
 
 def worker2(data):
@@ -77,7 +79,8 @@ def test_pool2(size):
         print returnedData[i]
         print ""
 
-    #pool p will close automatically
+    p.terminate()
+    p.join()
 
 def fail_workers(pool, failures):
     """
@@ -92,6 +95,7 @@ def fail_workers(pool, failures):
         "emulating a worker fails via its terminate()"
         pool._pool[i].terminate()
         pool._pool[i].join()
+
     "after failing processes, we need to recover the amount of processes in the pool"
     pool._maintain_pool()
 
@@ -107,6 +111,8 @@ def test_pool_failing_workers(size, failures):
     fail_workers(p, failures)
     print "Workers after failures:", p._pool
     print ""
+    p.terminate()
+    p.join()
 
 def who_i_am(data):
     """
@@ -128,6 +134,8 @@ def test_pool_who_i_am(size):
     p.map(who_i_am, data)
     p.map(who_i_am, datalist)
     print ""
+    p.terminate()
+    p.join()
 
 def test_pool_who_i_am_uniform(size):
     """
@@ -155,6 +163,7 @@ def test_pool_who_i_am_uniform(size):
 
     for pool in p:
         pool.terminate()
+        pool.join()
     print ""
 
 
