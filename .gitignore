@@ -1,0 +1,3 @@
+# omit recursively *.lut.* and *.pyc files.
+**/*.lut.*
+**/*.pyc
